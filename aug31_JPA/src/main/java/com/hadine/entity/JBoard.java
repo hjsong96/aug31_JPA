@@ -1,17 +1,25 @@
-package com.hadine.web;
+package com.hadine.entity;
+
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.springframework.data.annotation.LastModifiedDate;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class JBoard {
-	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private int bno;
@@ -22,9 +30,15 @@ public class JBoard {
 	@Column(name="bcontent", columnDefinition = "MEDIUMTEXT")
 	private String content;
 	
-	@Column(columnDefinition = "TIMESTAMP")
-	private String bdate;
+	@LastModifiedDate
+	@Column(columnDefinition="TIMESTAMP")
+	private LocalDateTime bdate;
 	
-	private String mname;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="mno")
+	private Member member;
+	
+	
 	
 }

@@ -1,11 +1,17 @@
-package com.hadine.web.repository;
+package com.hadine.repository;
+
+import java.util.List;
 
 import org.springframework.data.repository.Repository;
 
-import com.hadine.web.JBoard;
+import com.hadine.entity.JBoard;
 
 public interface BoardRepository extends Repository<JBoard, Long> {
 
 	void save(JBoard jBoard);
+
+	List<JBoard> findAll();
+
+	JBoard findByBno(int bno);
 
 }

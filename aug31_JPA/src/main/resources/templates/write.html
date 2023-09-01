@@ -2,9 +2,10 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>게시판에 글쓰기</title>
+<title>Insert title here</title>
 </head>
 <body>
+<th:block th:insert="~{/menu.html}"></th:block>
    <h1>글쓰기</h1>
 
    <form th:action="@{./write}" method="post">

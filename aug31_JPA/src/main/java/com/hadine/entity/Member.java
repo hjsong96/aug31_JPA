@@ -1,4 +1,6 @@
-package com.hadine.web;
+package com.hadine.entity;
+
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,25 +10,27 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
+//영속성
 @Entity
+@Table(name = "jmember")
+@NoArgsConstructor
 @Data
-@Table(name = "jmembers")
 public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int mno;
 	
 	@Column(length = 10)
-	private String m_name;
+	private String mname;
 	
-	@Column(name="m_id", unique = true)
-	private String m_id;
+	@Column(unique = true)
+	private String mid;
 	
-	
-	private String m_pw;
+	@Column(nullable = false)
+	private String mpw;
 	
 	@Column(columnDefinition = "TIMESTAMP")
-	private String m_joindate;
+	private LocalDateTime mjoindate;
 	
 }
